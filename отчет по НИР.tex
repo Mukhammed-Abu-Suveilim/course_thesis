@@ -1,0 +1,133 @@
+\documentclass[14pt,onecolumn,a4paper]{article}
+\usepackage[a4paper, mag=1000, left=2cm, right=2cm, top=2cm, bottom=2cm, headsep=1cm, footskip=1cm]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings} 
+\usepackage{caption}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{float}
+\usepackage{afterpage}
+\usepackage{graphicx}
+\usepackage{placeins} % For \FloatBarrier
+%\usepackage{newtxtext} % Times New Roman font
+\usepackage[
+citestyle=alphabetic-verb,
+bibstyle=bibfiles/gost-numeric
+]{biblatex}
+\addbibresource{cite.bib} % Specify the bibliography file
+\usepackage[colorlinks, linkcolor=black, urlcolor=black, citecolor=black]{hyperref}
+\newcommand{\notes}[3][\empty]{%
+    \noindent Оценка\vspace{5pt}
+        {\rule{#3}{0.5pt}\\}
+}
+\newtheorem{definition}{Определение}[section] % This makes the definition counter reset at each new section
+\DeclareCaptionFont{white}{\color{white}} 
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\lstset{% Собственно настройки вида листинга
+inputencoding=utf8, extendedchars=\true, keepspaces = true, % поддержка кириллицы и пробелов в комментариях
+language=Pascal,            % выбор языка для подсветки (здесь это Pascal)
+basicstyle=\small\sffamily, % размер и начертание шрифта для подсветки кода
+numbers=left,               % где поставить нумерацию строк (слева\справа)
+numberstyle=\tiny,          % размер шрифта для номеров строк
+stepnumber=1,               % размер шага между двумя номерами строк
+numbersep=5pt,              % как далеко отстоят номера строк от подсвечиваемого кода
+backgroundcolor=\color{white}, % цвет фона подсветки - используем \usepackage{color}
+showspaces=false,           % показывать или нет пробелы специальными отступами
+showstringspaces=false,     % показывать или нет пробелы в строках
+showtabs=false,             % показывать или нет табуляцию в строках
+frame=single,               % рисовать рамку вокруг кода
+tabsize=2,                  % размер табуляции по умолчанию равен 2 пробелам
+captionpos=t,               % позиция заголовка вверху [t] или внизу [b] 
+breaklines=true,            % автоматически переносить строки (да\нет)
+breakatwhitespace=false,    % переносить строки только если есть пробел
+escapeinside={\%*}{*)}      % если нужно добавить комментарии в коде
+}
+\usepackage{acronym}
+\newcommand{\addabbreviation}[2]{%
+    \entry{#1}{#2}
+}
+
+% Adjust section and subsection font size and style
+\usepackage{titlesec}
+\titleformat*{\section}{\fontsize{14pt}{17pt}\selectfont\bfseries}
+\titleformat*{\subsection}{\fontsize{14pt}{17pt}\selectfont\bfseries}
+
+\begin{document}
+\fontsize{14pt}{17pt}\selectfont
+% Переоформление некоторых стандартных названий
+%\renewcommand{\chaptername}{Научно-исследовательская работа}
+\def\contentsname{Содержание}
+
+% Оформление титульного листа
+\begin{titlepage}
+\begin{center}
+\textbf{Федеральное государственное автономное образовательное учреждение высшего образования\\
+«РОССИЙСКИЙ УНИВЕРСИТЕТ ДРУЖБЫ НАРОДОВ»
+(РУДН)
+\\[5mm]
+Факультет физико-математических и естественных наук\\[2mm]
+Кафедра математического моделирования и искусственного интеллекта}
+\end{center}
+
+\vfill
+
+\begin{flushleft}
+Основное учебное подразделение: факультет физико-математических и естественных наук\\
+Направление/специальность: 02.03.01 Математика и компьютерные науки
+\end{flushleft}
+
+\begin{center}
+\textbf{ОТЧЁТ\\[3mm]
+о прохождении учебной практики\\[3mm]
+«Научно-исследовательская работа (получение первичных навыков научно-исследовательской работы)» 
+\\[20mm]
+}
+\end{center}
+
+\hfill
+\begin{center}
+Абу Сувейлим Мухаммед Мунифович\\
+\end{center}
+
+\begin{flushleft}
+Курс, группа: 3, НКНбд-01-21\\[3mm]
+Место прохождения практики: научные центры института прикладной математики и телекоммуникаций \\[6mm]
+Сроки прохождения с «15» апреля 2024 г. по «15» июня 2024 г. 
+\end{flushleft}
+
+\vfill
+
+\begin{minipage}{7cm}
+{Руководители практики:\\[3mm]
+от РУДН Фомин М.Б., к.ф.-м.н, доцент\\ 
+от организации (предприятия)  Самуйлов К.Е., директор ИКНиТ}
+\end{minipage}
+
+\vspace{12mm}	
+\notes{1}{0.5\textwidth}
+
+\vfill
+
+\begin{center}
+ Москва, 2024 г.
+\end{center}
+
+\end{titlepage}
+
+
+% Содержание
+\tableofcontents
+\newpage
+\input{lab1}
+%\input{lab2} Отчёт к каждой работе оформляется в отдельном файле
+\addcontentsline{toc}{section}{Список литературы} % Add bibliography to table of contents
+\printbibliography % Command to print the bibliography
+
+\end{document}

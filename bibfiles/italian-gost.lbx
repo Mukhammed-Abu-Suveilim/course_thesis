@@ -1,0 +1,12 @@
+\ProvidesFile{italian-gost.lbx}
+[2023/04/25\space v1.24\space biblatex-gost styles]
+
+\InheritBibliographyExtras{italian}
+\InheritBibliographyStrings{italian}
+
+\iftoggle{bbx:gost:otherlangs}
+  {\DeclareBibliographyStrings{%
+    pages            = {{pagine}{p\adddot}},
+  }}{}
+
+\endinput
